@@ -10,9 +10,11 @@ namespace StarshipChallenge
     {
         public abstract int SetTravelSpeed();
         public abstract int Colonization();
+        public string Habitable { get; set; }
+        protected int area;
     }
 
-    class IsHabitable:Habitability
+    class IsHabitable : Habitability
     {
         public override int Colonization()
         {
@@ -22,6 +24,8 @@ namespace StarshipChallenge
         {
             throw new NotImplementedException();
         }
+        
+            
     }
     class NotHabitable:Habitability
     {

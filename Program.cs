@@ -25,8 +25,18 @@ namespace StarshipChallenge
             location.xCoordinate = x;
             location.yCoordinate = y;
             location.zCoordinate = z;
-            
+            Habitability hab;
             var surface = location.CalculateSurfaceArea(location.xCoordinate, location.yCoordinate, location.zCoordinate);
+           
+            if(surface >= 1000000 || surface <= 100000000)
+            {
+                //set habitability
+                hab = new IsHabitable();
+            }
+            else
+            {
+                hab = new NotHabitable();
+            }
             Console.WriteLine(surface);
             Console.ReadLine();
 
