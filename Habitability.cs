@@ -2,12 +2,17 @@
 
 namespace StarshipChallenge
 {
+    /*
+     * I have tried to implement Strategy Pattern to define a planet's habitability
+     * I have encapsulated algorithms from the location class to a class called habitabity which includes subclasses(IsHabitable and NotHabitable)
+     * Which provide their own implementation
+     */
     abstract class Habitability
     {
         public abstract int SetTravelSpeed();
         public virtual double Colonization(double area)
         {
-            return 1;
+            return area;
         }
         public string Habitable { get; set; }
         protected int Area;

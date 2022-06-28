@@ -11,6 +11,7 @@ namespace StarshipChallenge
             Location location = new Location();
             bool isHabitable = false;
 
+            //limited random to 5 instead of 15000 due to perfomance issue
             for (int i = 0; i <= 5; i++)
             {
                 //Generate Coordinates
@@ -25,6 +26,8 @@ namespace StarshipChallenge
                 Habitability hab;
                 var surfaceArea = location.CalculateSurfaceArea(location.xCoordinate, location.yCoordinate, location.zCoordinate);
 
+                //If surface Area is between 1 Million and 100 Million Mark location as habitable
+                //Else if surface area is less than 1 Million or less than 0 mark location as inhabitable
                 if (surfaceArea >= 1000000 || surfaceArea <= 100000000)
                 {
                     isHabitable = true;
@@ -41,6 +44,7 @@ namespace StarshipChallenge
             }
            
         }
+        
         static void WriteToFile(int x, int y, int z, bool isHabitable,int surfaceArea)
         {
             StreamWriter file = new StreamWriter("Planets.txt",true);
