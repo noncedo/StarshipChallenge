@@ -1,41 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StarshipChallenge
 {
-   abstract class Habitability
+    abstract class Habitability
     {
         public abstract int SetTravelSpeed();
-        public abstract int Colonization();
+        public virtual double Colonization(double area)
+        {
+            return 1;
+        }
         public string Habitable { get; set; }
-        protected int area;
+        protected int Area;
     }
 
     class IsHabitable : Habitability
     {
-        public override int Colonization()
+        public override double Colonization(double area)
         {
-            throw new NotImplementedException();
+            //Not sure how much time it takes to colonise a planet.
+            double ColonisedSurfaceArea = 0.043 * (0.5 * area);
+
+            return ColonisedSurfaceArea;
         }
         public override int SetTravelSpeed()
         {
-            throw new NotImplementedException();
+            return 10;
         }
         
             
     }
     class NotHabitable:Habitability
     {
-        public override int Colonization()
-        {
-            throw new NotImplementedException();
-        }
         public override int SetTravelSpeed()
         {
-            throw new NotImplementedException();
+            return 10 * 2;
         }
     }
 }
